@@ -3,9 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:PacersCyc/dd-upload-cli.git",
+  "author": "PacersCyc <452720855@qq.com>",
   "license": "MIT",
+  "bin": {
+    "dd-upload": "cli.js"
+  },
   "dependencies": {
+    "ali-oss": "^6.9.1",
+    "atob": "^2.1.2",
+    "axios": "^0.19.2",
+    "btoa": "^1.2.1",
     "chalk": "^4.1.0",
-    "commander": "^5.1.0"
+    "commander": "^5.1.0",
+    "form-data": "^3.0.0",
+    "inquirer": "^7.2.0",
+    "progress": "^2.0.3"
   }
 }
