@@ -13,7 +13,7 @@ program
   .option('-u, --username <username>', '系统用户名')
   .option('-p, --password <password>', '系统密码')
   .option('-b, --bucket <bucketName>', 'bucket name')
-  .option('-e, --endpoint <endpoint>', 'oss endpoint', 'didongkj.com')
+  .option('-ep, --endpoint <endpoint>', 'oss endpoint', 'didongkj.com')
 
 program
   .version(require('../package.json').version, '-v --version')
