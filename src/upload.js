@@ -9,7 +9,6 @@ const ProgressBar = require('progress')
 
 const ossUpload = async (filePath, ossOptions) => {
   console.log(filePath)
-  let file = fs.readFileSync(filePath)
   let client = new OSS(ossOptions)
   const fileName = path.basename(filePath)
   let tick = 0
@@ -20,7 +19,7 @@ const ossUpload = async (filePath, ossOptions) => {
   })
 
   try {
-    let result = await client.multipartUpload(fileName, file, {
+    let result = await client.multipartUpload(fileName, filePath, {
       progress: (percentage, checkpoint, res) => {
         // console.log(percentage, checkpoint, res)
         tick = percentage * 100 - tick
