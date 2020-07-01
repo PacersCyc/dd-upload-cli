@@ -1,6 +1,6 @@
 {
   "name": "dd-upload-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "repository": "git@github.com:PacersCyc/dd-upload-cli.git",
   "author": "PacersCyc <452720855@qq.com>",
@@ -8,6 +8,10 @@
   "bin": {
     "dd-upload": "cli.js"
   },
+  "files": [
+    "cli.js",
+    "src/**/*.js"
+  ],
   "dependencies": {
     "ali-oss": "^6.9.1",
     "atob": "^2.1.2",
