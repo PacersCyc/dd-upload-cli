@@ -3,14 +3,13 @@ const path = require('path')
 const chalk = require('chalk')
 const OSS = require('ali-oss')
 const axios = require('axios')
-const FormData = require('form-data')
 const ProgressBar = require('progress')
-const { Base64 } = require('./util')
-const { getHostname } = require('./config')
 
 // const baseUrl = 'http://eureka.dd.inf:30801'
 
 const ossUpload = async (filePath, ossOptions) => {
+  console.log(filePath)
+  let file = fs.readFileSync(filePath)
   let client = new OSS(ossOptions)
   const fileName = path.basename(filePath)
   let tick = 0
@@ -21,7 +20,7 @@ const ossUpload = async (filePath, ossOptions) => {
   })
 
   try {
-    let result = await client.multipartUpload(fileName, filePath, {
+    let result = await client.multipartUpload(fileName, file, {
       progress: (percentage, checkpoint, res) => {
         // console.log(percentage, checkpoint, res)
         tick = percentage * 100 - tick
