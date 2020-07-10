@@ -7,10 +7,11 @@ const ProgressBar = require('progress')
 
 // const baseUrl = 'http://eureka.dd.inf:30801'
 
-const ossUpload = async (filePath, ossOptions) => {
+const ossUpload = async (filePath, ossOptions, uploadPath) => {
   console.log(filePath)
   let client = new OSS(ossOptions)
-  const fileName = path.basename(filePath)
+  const fileName = path.join(uploadPath, path.basename(filePath))
+  console.log(fileName)
   let tick = 0
   let bar = new ProgressBar('上传中: [:bar]', {
     total: 100,
@@ -35,7 +36,7 @@ const ossUpload = async (filePath, ossOptions) => {
   }
 }
 
-module.exports = async function (filePath, url, options) {
+module.exports = async function (filePath, url, options, uploadPath = '') {
   try {
     let stsRes = await axios.get(`${url}/back-http/video/getAliStsResponse`, {
       headers: {
@@ -52,7 +53,7 @@ module.exports = async function (filePath, url, options) {
         bucket: options.bucket,
         endpoint: options.endpoint
       }
-      let res = await ossUpload(filePath, ossOptions)
+      let res = await ossUpload(filePath, ossOptions, uploadPath)
     } else {
       console.log(chalk.red(stsRes.data.message))
     }

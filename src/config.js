@@ -21,7 +21,8 @@ const bucketMap = {
     'didong-music',
     'didong-pic',
     'didong-effects',
-    'didong-slim'
+    'didong-slim',
+    'didong-others'
   ]
 }
 

@@ -17,8 +17,9 @@ program
 
 program
   .version(require('../package.json').version, '-v --version')
-  .arguments('<file>')
-  .action(async function (file) {
+  .arguments('<file> [uploadPath]')
+  .action(async function (file, uploadPath) {
+    console.log(uploadPath)
     let args = program.opts()
     // console.log(args)
     if (!args.env || !args.username || !args.password || !args.bucket) {
@@ -85,13 +86,13 @@ program
           await upload(file, options.host, {
             ...options,
             endpoint: args.endpoint
-          })
+          }, uploadPath)
         })
         .catch(err => {
           console.log(chalk.red(err))
         })
     } else {
-      await autoUpload(file, args)
+      await autoUpload(file, args, uploadPath)
     }
 
   })

@@ -19,5 +19,5 @@ npm install -g dd-upload-cli
 
 ## 使用
 ```bash
-dd-upload [filePath]
+dd-upload <filePath> [uploadPath]
 ```
