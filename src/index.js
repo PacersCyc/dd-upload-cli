@@ -17,8 +17,8 @@ program
 
 program
   .version(require('../package.json').version, '-v --version')
-  .arguments('<file> [uploadPath]')
-  .action(async function (file, uploadPath) {
+  .arguments('<file> [uploadPath] [mode]')
+  .action(async function (file, uploadPath, mode) {
     console.log(uploadPath)
     let args = program.opts()
     // console.log(args)
@@ -92,7 +92,7 @@ program
           console.log(chalk.red(err))
         })
     } else {
-      await autoUpload(file, args, uploadPath)
+      await autoUpload(file, args, uploadPath, mode)
     }
 
   })
