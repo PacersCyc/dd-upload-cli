@@ -23,6 +23,8 @@ module.exports = async (filePath, options, uploadPath, mode) => {
   let bucketList = getBucketList(env)
   let token = await login({ username, password }, url)
 
+  filePath = path.isAbsolute(filePath) ? filePath : path.resolve(__dirname, filePath)
+  console.log(filePath)
   let stat
   try {
     stat = fs.lstatSync(filePath)
